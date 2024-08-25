@@ -7,8 +7,8 @@ const AboutPage = () => {
         <h1 className="text-3xl font-bold">About Me</h1>
 
         <div className="mt-4">
-          <p className="text-xl">Hi, I&apos;m Brennan Mahto.</p>
-          <p className="mt-2">I work in IT and have a passion for technology and coding.</p>
+          
+<h1>the site is currently under construction...</h1>
           <p className="mt-2">Feel free to connect with me on my socials:</p>
         </div>
       </div>
