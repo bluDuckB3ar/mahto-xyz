@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import Logo from "@/public/logo.png";
-import Button from '@/components/Button';
+import Button from '@/src/components/Button';
 import Link from 'next/link';
 
 const links = [
