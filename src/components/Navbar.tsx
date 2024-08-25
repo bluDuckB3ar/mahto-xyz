@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 
-import Button from "@/src/components/Button";
+import Button from "@/components/Button";
 import Link from "next/link";
 
 export default function Navbar() {

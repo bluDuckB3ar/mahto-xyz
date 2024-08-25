@@ -1,10 +1,10 @@
 "use client"
-import Navbar from "@/src/components/Navbar";
-import Footer from "@/src/components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
-import Button from "@/src/components/Button";
-import Logo from "../public/logo.svg";
+import Button from "@/components/Button";
+import Logo from "@/public/logo.svg";
 const links = [
     { href: "/", label: "" },
 ];

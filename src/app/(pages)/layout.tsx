@@ -1,6 +1,6 @@
 "use client"
-import Navbar from "@/src/components/Navbar";
-import Footer from "@/src/components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function PageLayout({
   children,
@@ -18,9 +18,7 @@ export default function PageLayout({
       <div className="absolute bottom-0 center flex-auto" />
       <Footer />
     </div>          
-        </div>
-
-
+        
   );
 }
 
