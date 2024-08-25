@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/Button";
-import Logo from "@/public/logo.svg";
+import Logo from "../public/logo.svg";
 const links = [
     { href: "/", label: "" },
 ];

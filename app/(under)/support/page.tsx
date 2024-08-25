@@ -1,12 +1,7 @@
-
-export default function SupportPage() {
+const SupportPage = () => {
   return (
-    <div className=" text-center ">
-
-      Support Page
-    </div>
-
-  );
+    <div className=''> SupportPage</div>
+  )
 }
 
-
+export default SupportPage
