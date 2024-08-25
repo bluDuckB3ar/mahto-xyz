@@ -6,7 +6,7 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Logo from "@/public/logo.svg";
 const links = [
-    { href: "/", label: "" },
+    { href: "/", label: "Home" },
 ];
 export default function UnderLayout({
     children,
@@ -14,20 +14,20 @@ export default function UnderLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return (
+    return ( 
 
 
-        <div className="bg-background w-full h-screen ">
+        <div className="bg-background w-full h-screen">
             <Navbar />
             <div className="max-w-screen-xl mx-auto px-4 py-8">
 
                 {children}
 
-            </div>
-            <div className="center align-middle text-duckYellow flex-auto text-center ">
+
+            <div className="center align-middle text-duckYellow flex-auto text-center">
             <h1> We are under construction </h1>
             <div
-             className="flex flex-col h-24 items-center  lg:flex-row sm:mt-8">
+             className="flex flex-col h-24 items-center lg:flex-row sm:mt-8">
           
             {links.slice(0, 1).map((link) => (
               <Link key={link.href} href={link.href} className="flex-1 basis-[calc(50%-2rem)]">
@@ -46,7 +46,7 @@ export default function UnderLayout({
                
                 
                 
-                <div className="absolute bottom-0 center flex-auto ">
+                <div className="absolute bottom-0 center flex-auto">
                     <Footer />
                 </div>
             </div>
