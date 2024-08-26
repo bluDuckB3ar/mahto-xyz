@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import Logo from "@/public/logo.png";
+import Logo from "@/public/logo.svg";
 import Button from '@/components/Button';
 import Link from 'next/link';
 
@@ -21,7 +21,7 @@ export default function Home() {
             {links.slice(0, 1).map((link) => (
               <Link key={link.href} href={link.href} className="flex-1 basis-[calc(50%-2rem)]">
                 <div className="flex justify-center h-1/2">
-                  <Button className="w-1/2 text-duckBlue2">
+                  <Button className="w-5a/6 text-duckBlue2">
                     <Image src={Logo} alt="Logo" width={80} height={80} className="w-20" />
                     {link.label}
                     <div className="p-2 text-center">
