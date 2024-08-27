@@ -14,11 +14,11 @@ const Button: React.FC<ButtonProps> = ({ children, className = '', onClick }) =>
       relative
       inline-flex
       h-12
-      sm:h-16
+      sm:h-20
       lg:h-20
       items-center
       justify-center
-      overflow-hidden
+overflow-hidden
       rounded-md
       border-2
       border-duckBlue
@@ -44,4 +44,3 @@ const Button: React.FC<ButtonProps> = ({ children, className = '', onClick }) =>
 );
 
 export default Button;
-

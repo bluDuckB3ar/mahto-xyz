@@ -1,19 +1,16 @@
-// Navbar.tsx
-"use client";
+// src/components/Navbar.tsx
 import { useState } from "react";
-
 import Button from "@/components/Button";
-import Link from "next/link";
+
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+  { href: "/support", label: "Support" },
+];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
-    { href: "/support", label: "Support" },
-  ];
 
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -25,13 +22,15 @@ export default function Navbar() {
         <div className="text-duckBlue2 text-sm font-semibold">
           duckb3ar
         </div>
-        <div className="hidden md:flex gap-10 ">
+        <div className="hidden md:flex gap-10">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <Button className="w-2 border-2 text-sm text-duckBlue">
-                {link.label}
-              </Button>
-            </Link>
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-duckBlue2 hover:text-duckBlue1"
+            >
+              {link.label}
+            </a>
           ))}
         </div>
         <Button
@@ -57,15 +56,16 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col items-center justify-center space-y-7 mt-4">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <Button className="w-full text-sm text-duckBlue2 ">
-                {link.label}
-              </Button>
-            </Link>
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-duckBlue2 hover:text-duckBlue1"
+            >
+              {link.label}
+            </a>
           ))}
         </div>
       )}
     </nav>
   );
 }
-
