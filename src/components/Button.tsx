@@ -14,8 +14,8 @@ const Button: React.FC<ButtonProps> = ({ children, className = '', onClick }) =>
       relative
       inline-flex
       h-12
-      sm:h-20
-      lg:h-20
+      sm:h-12
+      lg:h-24
       items-center
       justify-center
 overflow-hidden
