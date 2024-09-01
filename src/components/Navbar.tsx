@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 
-import Button from "@/components/Button";
+import DuckButton from "@/components/DuckButton";
 import Link from "next/link";
 
 /**
@@ -33,13 +33,13 @@ mahto.xyz        </div>
         <div className="hidden md:flex gap-6 ">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <Button className="w-2 border-2 text-sm text-duckBlue">
+              <DuckButton className="w-2 border-2 text-sm text-duckBlue">
                 {link.label}
-              </Button>
+              </DuckButton>
             </Link>
           ))}
         </div>
-        <Button
+        <DuckButton
           className="md:hidden text-duckBlue2"
           onClick={handleMobileMenuClick}
         >
@@ -57,15 +57,15 @@ mahto.xyz        </div>
               d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
             ></path>
           </svg>
-        </Button>
+        </DuckButton>
       </div>
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col items-center justify-center">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <Button className="w-full text-sm text-duckBlue2 ">
+              <DuckButton className="w-full text-sm text-duckBlue2 ">
                 {link.label}
-              </Button>
+              </DuckButton>
             </Link>
           ))}
         </div>

@@ -19,10 +19,13 @@ const config: Config = {
         duckPurple: "#922085",
         duckBlue2: "#d3eef9",
         duckYellow: "#ecd73c",
-
       },
     },
   },
   plugins: [],
 };
+// Removed extra whitespace
+
 export default config;
+
+

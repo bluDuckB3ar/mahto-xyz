@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-background px-4 py-4 shadow-md">
       <div className="max-w-screen-sm mx-auto flex flex-col items-center">
         
-        <div className="flex gap-4 hidden md:flex">
+        <div className="flex gap-4  md:flex">
           <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 text-black">
             LinkedIn
           </a>

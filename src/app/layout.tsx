@@ -1,28 +1,48 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Link from "next/link";
+import Image from "next/image";
+import DuckButton from "@/components/DuckButton";
+import Logo from "@/public/logo.svg";
 
-const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "duckb3ar",
-  description: "not a quak house but a quak home",
-};
+const links = [
+    { href: "/", label: "" },
+];
 
-export default function RootLayout({
-  children,
+export default function UnderLayout({
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${inter.className} text-duckBlue bg-background`}>
-        <div className="bg-background">
-         
-            {children}
-        </div>
-      </body>
-    </html>
-  );
-}
+    return (
+        <div className="flex flex-col min-h-screen">
+            <Navbar />
 
+            <div className="flex-grow max-w-screen-xl mx-auto px-4 py-8">
+                {children}
+            </div>
+
+            <div className="center align-middle text-duckYellow flex-auto text-center">
+                <h1> We are under construction </h1>
+                <div className="flex flex-col h-24 items-center  lg:flex-row sm:mt-8">
+                    {links.slice(0, 1).map((link) => (
+                        <Link key={link.href} href={link.href} className="flex-1 basis-[calc(50%-2rem)]">
+                            <div className="flex justify-center h-1/2">
+                                <DuckButton className=" text-duckBlue2">
+                                
+                                    <Image src={Logo} alt="Logo" width={80} height={80} className="w-20" />
+                                    {link.label}
+                               
+                                </DuckButton>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
+            <Footer />
+        </div>
+    );                          
+
+};
