@@ -62,7 +62,8 @@ const ContactPage: React.FC = () => {
           <div>
             <h2 className="text-3xl font-bold mb-4">Need Tech Support?</h2>
             <p className="mb-2">Feel free to reach out to me!</p>
-            <p className='flex-auto'>Phone: (317)-316-0964</p>
+            <p>Saturday - Sunday:<span className='text-duckYellow'>(317)-316-0964</span></p>
+
             <div className='my-3'>
             <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
             <div className='my-3'>

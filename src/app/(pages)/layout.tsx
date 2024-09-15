@@ -1,6 +1,6 @@
-"use client"
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+"use client";
+import Navbar from "@/components/nav/Navbar";
+import Footer from "@/components/nav/Footer";
 
 export default function PageLayout({
   children,
@@ -10,15 +10,16 @@ export default function PageLayout({
   return (
 
 
-    <div className="bg-background w-full h-screen ">
+    <div className="bg-background w-full h-full ">
       <Navbar />
-      <div className="max-w-screen-xl mx-auto px-4 py-8">
+      <div className="max-w-screen-lg mx-auto px-4 py-3">
         {children}
       </div>
-      <div className="absolute bottom-0 center flex-auto" />
-      <Footer />
+      <div className="absolute bottom-0" >
+        <Footer />
     </div>          
         
-  );
-}
+    </div>);
+}  
+
 
