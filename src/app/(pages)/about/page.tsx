@@ -66,23 +66,31 @@ const AboutPage: React.FC = () => {
 
   const skillsByCategory: SkillCategories = {
     Networking: [
-      'Active Directory',
-      'Azure',
-      'Windows Server 2022',
-      'Windows 10/11',
-      'Debian',
-      'Ubuntu Server',
-      'OPENVPN',
-      'SCCM',
-      'MDT',
-      'Hyper-V',
-      'Cisco',
-      'Citrix',
-      'Remote Desktop',
+      'Switches/Routers',
+      'Patch Panels',
+      'Firewalls',
+      'TCP/IP',
       'DNS',
     ],
-    Software: [
+    
+    'Systems Administration': [
+      'Active Directory',
+      'Azure',
+      'Office 365',
+      'Exchange',
+      'SharePoint',
+      'OneDrive',
+      'Intune',
+      'PowerShell',
+    ],
+    Ticketing: [
       'ServiceNow',
+      'Oracle',
+      'IT Glue',
+      'Google Forms',
+      'Jira',
+    ],
+    Software: [
       'Microsoft 365',
       'JAMF',
       'Epic',
@@ -91,7 +99,7 @@ const AboutPage: React.FC = () => {
       'SQL',
     ],
     Hardware: ['Computer/Laptop Repair'],
-    Development: ['HTML', 'JS', 'CSS'],
+    Development: ['HTML', 'JS', 'CSS', 'PowerShell', 'Python', 'Bash', 'SQL', 'C++'],
     Certifications: ['CCENT', 'Net+', 'A+'],
   };
 
@@ -143,7 +151,7 @@ const AboutPage: React.FC = () => {
                 <div key={category}>
                   <h3 className="mb-2 text-xl font-semibold text-duckPurple">{category}</h3>
                   <ul className="pl-5 space-y-1 list-disc">
-                    {skills.map((skill, index) => (
+                    {skills.map((skill: string, index: number) => (
                       <li key={index}>{skill}</li>
                     ))}
                   </ul>

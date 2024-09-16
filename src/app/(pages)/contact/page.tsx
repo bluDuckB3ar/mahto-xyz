@@ -64,7 +64,7 @@ const ContactPage: React.FC = () => {
             <p className="mb-2">Feel free to reach out to me!</p>
             <p className='flex-auto'>Phone: (317)-316-0964</p>
             <div className='my-3'>
-            <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
+            <p>Monday - Friday:<span className='text-duckYellow'> 08:00-1700</span></p>
             <div className='my-3'>
               
             <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
