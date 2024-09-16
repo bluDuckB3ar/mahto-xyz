@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Send, Phone, User, Mail, MessageSquare } from 'lucide-react';
-import Alert, { AlertDescription } from "@/components/ui/alert"; // Corrected import
+import Alert from "@/components/ui/alert";
+import { useForm, ValidationError } from '@formspree/react';
 
 interface FormData {
   name: string;
@@ -26,23 +27,55 @@ const ContactPage: React.FC = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [state, handleSubmit] = useForm("meojwpyg");
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://formspree.io/js/formbutton-v1.min.js";
+    script.defer = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      (window as any).formbutton = (window as any).formbutton || function() { ((window as any).formbutton.q = (window as any).formbutton.q || []).push(arguments) };
+      (window as any).formbutton("create", {
+        action: "https://formspree.io/f/meojwpyg",
+        title: "How can we help?",
+        fields: [
+          { 
+            type: "email", 
+            label: "Email:", 
+            name: "email",
+            required: true,
+            placeholder: "brennan@mahto.xyz"
+          },
+          {
+            type: "textarea",
+            label: "Message:",
+            name: "message",
+            placeholder: "What's on your mind?",
+          },
+          { type: "submit" }      
+        ],
+        styles: {
+          title: {
+            backgroundColor: "gray"
+          },
+          button: {
+            backgroundColor: "gray"
+          }
+        }
+      });
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     setErrors(prev => ({ ...prev, [name]: '' }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const validationErrors = validate(formData);
-    if (Object.keys(validationErrors).length === 0) {
-      console.log('Form submitted!', formData);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', phoneNumber: '', message: '' });
-    } else {
-      setErrors(validationErrors);
-    }
   };
 
   const validate = (data: FormData): FormErrors => {
@@ -51,25 +84,48 @@ const ContactPage: React.FC = () => {
     if (!data.email) errors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(data.email)) errors.email = 'Email is invalid';
     if (!data.phoneNumber) errors.phoneNumber = 'Phone number is required';
+    else if (!/^\d{10}$/.test(data.phoneNumber)) errors.phoneNumber = 'Phone number is invalid';
     if (!data.message) errors.message = 'Message is required';
     return errors;
   };
 
+  const sanitizeUrl = (url: string): string => {
+    const parser = document.createElement('a');
+    parser.href = url;
+    if (parser.hostname !== window.location.hostname) {
+      return window.location.origin;
+    }
+    return url;
+  };
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const validationErrors = validate(formData);
+    if (Object.keys(validationErrors).length === 0) {
+      handleSubmit(e);
+      if (state.succeeded) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phoneNumber: '', message: '' });
+      }
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-duckBlue1 to-duckBlue2 flex items-center justify-center p-4">
-      <div className=" border-duckYellow rounded-lg border shadow-xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
-        <div className=" text-duckBlue2 border-duckYellow border p-8 md:w-/3 flex flex-col justify-between">
+      <div className="border-duckYellow rounded-lg border shadow-xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
+        <div className="text-duckBlue2 border-duckYellow border p-8 md:w-1/3 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl font-bold mb-4">Need Tech Support?</h2>
             <p className="mb-2">Feel free to reach out to me!</p>
             <p className='flex-auto'>Phone: (317)-316-0964</p>
             <div className='my-3'>
-            <p>Monday - Friday:<span className='text-duckYellow'> 08:00-1700</span></p>
-            <div className='my-3'>
-              
-            <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
+              <p>Monday - Friday:<span className='text-duckYellow'> 08:00-1700</span></p>
+              <div className='my-3'>
+                <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
+              </div>
             </div>
-</div>
           </div>
           <div className="text-duckYellow">
             <h3 className="text-xl font-semibold">Brennan Mahto</h3>
@@ -81,7 +137,7 @@ const ContactPage: React.FC = () => {
           {isSubmitted ? (
             <Alert message="Thank you for your message! I'll get back to you soon." type="success" />
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-duckBlue2 mb-1">Name</label>
                 <div className="relative">
@@ -145,12 +201,15 @@ const ContactPage: React.FC = () => {
               <div className="text-right">
                 <button
                   type="submit"
+                  disabled={state.submitting}
                   className="inline-flex items-center px-4 py-2 bg-duckPurple text-duckBlue2 rounded-md hover:bg-duckYellow hover:text-duckPurple transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-duckPurple"
                 >
                   <Send className="mr-2" size={18} />
                   Send Message
                 </button>
               </div>
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
             </form>
           )}
         </div>
