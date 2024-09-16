@@ -72,8 +72,8 @@ const AboutPage: React.FC = () => {
       'TCP/IP',
       'DNS',
     ],
-    
-    'Systems Administration': [
+
+    'Systems Administration Tools': [
       'Active Directory',
       'Azure',
       'Office 365',
@@ -83,7 +83,7 @@ const AboutPage: React.FC = () => {
       'Intune',
       'PowerShell',
     ],
-    Ticketing: [
+    Ticketing Systems: [
       'ServiceNow',
       'Oracle',
       'IT Glue',
@@ -99,8 +99,14 @@ const AboutPage: React.FC = () => {
       'SQL',
     ],
     Hardware: ['Computer/Laptop Repair'],
-    Development: ['HTML', 'JS', 'CSS', 'PowerShell', 'Python', 'Bash', 'SQL', 'C++'],
+    
     Certifications: ['CCENT', 'Net+', 'A+'],
+Microsoft Certifications: ['MTA', 'MCP', 'MCE'],
+  Programming: ['HTML', 'JS', 'CSS', 'PowerShell', 'Python', 'Bash', 'SQL', 'C++'],
+  Ticketing Systems: ['ServiceNow', 'Jira', 'Zendesk'],  
+  System Administration Tools: ['Active Directory', 'Azure', 'Office 365', 'Exchange', 'SharePoint', 'OneDrive', 'Intune'],
+
+  Certifications: ['CCENT', 'Net+', 'A+'],
   };
 
   const toggleSection = (section: keyof typeof openSections) => {
