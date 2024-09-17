@@ -24,10 +24,13 @@ const AboutPage: React.FC = () => {
       title: "IT Specialist (Site Support)",
       company: "Franciscan Alliance, Indianapolis IN",
       description: [
-        "Led the transition to our current Managed Service Provider, including creating a documented process for our inventory system, OS, workstation, and warranty repair guide.",
-        "Coordinated with other teams and vendors to resolve hardware, network, and application issues, ensuring efficient communication and problem resolution.",
-        "Configured and maintained support for our central region, a 2,500+ user environment; varied from imaging, deployment, repair, movement, documentation, and support for two hospital staff, 12 main hospitals, 12 subsidiary buildings, and an education center.",
-        "Created a safe place for our technical departments what is known as SQLL: (stupid questions)', 'tips', 'info', and locations'): it includes our helpdesk to our cloud technicians to keep in touch for our ongoing issues, and question each task (no questions are stupid, stupid, is not mentality)",
+"",
+
+"",
+
+"", 
+
+
       ],
     },
     {
@@ -35,9 +38,9 @@ const AboutPage: React.FC = () => {
       title: "IT Manager",
       company: "Catapult Tech Solution's, Carmel Indiana",
       description: [
-        "Led the rebranding and transition ou daughter company from \"Computer Troubleshooters of Carmel\" to \"Computer Technology of Carmel\".",
-        "Provided comprehensive IT support for diverse environments, from businesses to homes, day's varying by minutes from building custom PCs, to diagnosing a network outage, to fixing an iPad, to setting up security cameras.",
-        "Implemented and maintained quality-of-life projects.",
+"",
+"",
+"", 
       ],
     },
     {
@@ -45,10 +48,12 @@ const AboutPage: React.FC = () => {
       title: "Field Technician",
       company: "Fujitsu, Indianapolis, IN",
       description: [
-        "POS systems identifying hardware and software failures and putting fixes in place to get the system working again.",
-        "Hardware support, such as credit card terminals/cash registers/barcode scanners and peripheral devices on-site or over the phone.",
-        "Providing technical support to store personnel, offering guidance on POS system operation and troubleshooting common problems.",
-        "Performing preventative maintenance, regularly inspecting and servicing POS equipment to prevent breakdowns and optimize performance.",
+"",
+
+"",
+
+"", 
+
       ],
     },
     {
@@ -56,10 +61,11 @@ const AboutPage: React.FC = () => {
       title: "IT Supervisor",
       company: "K-12, Indianapolis, IN",
       description: [
-        "Hardware Maintenance: Managing and repairing computers, printers, projectors, and other technology equipment.",
-        "Inventory Management: Keeping track of technology assets and ensuring proper distribution.",
-        "Mentoring: Providing guidance and training to technology-focused interns or student helpers.",
-        "Equipment Audits: Conducting regular inspections of technology equipment to assess condition and functionality.",
+"",
+
+"",
+
+"", 
       ],
     },
   ];
