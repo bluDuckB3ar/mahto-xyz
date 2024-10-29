@@ -16,7 +16,7 @@ export default function PageLayout({
         {children}
       </div>
       <div className="absolute bottom-0" >
-        <Footer />
+        
     </div>          
         
     </div>);

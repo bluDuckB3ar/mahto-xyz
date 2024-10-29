@@ -14,11 +14,11 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        background: "#0B1114",
-        duckBlue: "#78cff2",
-        duckPurple: "#922085",
+        background: "#000000",
+        duckBlue: "#31c1fd",
+        duckPurple: "#cc66d6",
         duckBlue2: "#d3eef9",
-        duckYellow: "#ecd73c",
+        duckYellow: "#fbc450",
 
       },
     },

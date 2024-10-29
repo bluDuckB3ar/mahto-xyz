@@ -57,8 +57,8 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-duckBlue1 to-duckBlue2 flex items-center justify-center p-4">
-      <div className=" border-duckYellow rounded-lg border shadow-xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
-        <div className=" text-duckBlue2 border-duckYellow border p-8 md:w-/3 flex flex-col justify-between">
+      <div className="border-duckYellow rounded-lg border  overflow-hidden max-w-6xl w-full flex flex-col md:flex-row">
+      <div className=" text-duckBlue2 border-duckYellow border p-8 md:w-/3 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl font-bold mb-4">Need Tech Support?</h2>
             <p className="mb-2">Feel free to reach out to me!</p>
@@ -91,11 +91,11 @@ const ContactPage: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckPurple ${errors.name ? 'border-duckPurple' : 'border-duckBlue2'}`}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.name ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
                 </div>
-                {errors.name && <p className="mt-1 text-xs text-duckPurple">{errors.name}</p>}
+                {errors.name && <p className="mt-1 text-xs text-duckBlue">{errors.name}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-duckBlue2 mb-1">Email</label>
@@ -106,11 +106,11 @@ const ContactPage: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckPurple ${errors.email ? 'border-duckPurple' : 'border-duckBlue2'}`}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.email ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
                 </div>
-                {errors.email && <p className="mt-1 text-xs text-duckPurple">{errors.email}</p>}
+                {errors.email && <p className="mt-1 text-xs text-duckBlue">{errors.email}</p>}
               </div>
               <div>
                 <label htmlFor="phoneNumber" className="block text-sm font-medium text-duckBlue2 mb-1">Phone Number</label>
@@ -121,11 +121,11 @@ const ContactPage: React.FC = () => {
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckPurple ${errors.phoneNumber ? 'border-duckPurple' : 'border-duckBlue2'}`}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.phoneNumber ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
                 </div>
-                {errors.phoneNumber && <p className="mt-1 text-xs text-duckPurple">{errors.phoneNumber}</p>}
+                {errors.phoneNumber && <p className="mt-1 text-xs text-duckBlue">{errors.phoneNumber}</p>}
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-duckBlue2 mb-1">Message</label>
@@ -136,16 +136,16 @@ const ContactPage: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckPurple ${errors.message ? 'border-duckPurple' : 'border-duckBlue2'}`}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.message ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <MessageSquare className="absolute left-3 top-3 text-duckBlue2" size={18} />
                 </div>
-                {errors.message && <p className="mt-1 text-xs text-duckPurple">{errors.message}</p>}
+                {errors.message && <p className="mt-1 text-xs text-duckBlue">{errors.message}</p>}
               </div>
               <div className="text-right">
                 <button
                   type="submit"
-                  className="inline-flex items-center px-4 py-2 bg-duckPurple text-duckBlue2 rounded-md hover:bg-duckYellow hover:text-duckPurple transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-duckPurple"
+                  className="inline-flex items-center px-4 py-2 bg-duckBlue text-duckBlue2 rounded-md hover:bg-duckYellow hover:text-duckBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-duckBlue"
                 >
                   <Send className="mr-2" size={18} />
                   Send Message

@@ -14,9 +14,8 @@ const links = [
 export default function Home() {
   return (
     <div className="flex items-center justify-center h-full">
-        <div className="left-0 right-0 text-center my-20 text-duckBlue2">
-
-          Mahto.xyz
+      <div className="left-0 right-0 text-center my-20 text-duckBlue2">
+        Mahto.xyz
         <div className="flex flex-wrap gap-16 mt-20">
           {links.slice(1).map((link) => (
             <Link key={link.href} href={link.href} className="flex-1 basis-[calc(50%-2rem)]">
@@ -27,6 +26,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-</div>          
-  )
+    </div>
+  );
 }
