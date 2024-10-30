@@ -1,81 +1,221 @@
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+"use client";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import { Send, Phone, User, Mail, MessageSquare } from 'lucide-react';
+import Alert from "@/components/ui/alert";
+import { useForm, ValidationError } from '@formspree/react';
 
-export interface BlogPost {
-    slug: string;
-    title: string;
-    date: string;
-    category: string;
-    excerpt: string;
-    content: string;
-    tags: string[];
+interface FormData {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  message: string;
 }
 
-export const BlogCardComponent: React.FC<{ post: BlogPost }> = ({ post }) => (
-  <motion.article 
-    whileHover={{ scale: 1.02 }}
-    className="bg-white rounded-lg shadow-lg overflow-hidden"
-  >
-    <Link href={`/blog/${post.slug}`} passHref>
-      <div className="p-6 cursor-pointer">
-        <span className="text-sm text-blue2">{post.date}</span>
-        <h2 className="text-2xl font-bold text-duckPurple mt-2">{post.title}</h2>
-        <span className="inline-block bg-duckBlue-100 text-blue2 rounded-full px-3 py-1 text-sm my-2">
-          {post.category}
-        </span>
-        <p className="text-gray-600 mt-2">{post.excerpt}</p>
-        <div className="flex gap-2 mt-4">
-          {post.tags.map((tag) => (
-            <span key={tag} className="text-xs bg-gray-100 rounded-full px-2 py-1">
-              #{tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </Link>
-  </motion.article>
-);
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phoneNumber?: string;
+  message?: string;
+}
 
-const BlogPage: React.FC<{ posts: BlogPost[] }> = ({ posts }) => (
-  <div className="bg-background min-h-screen relative">
-    <nav className="px-2 py-2 bg-background w-full">
-      <div className="flex items-center justify-between max-w-screen-lg mx-auto">
-        <div className="text-medium font-bold text-duckBlue2">mahto.xyz</div>
-        <div className="hidden gap-10 md:flex">
-          <Link href="/contact"><a className="button">Contact</a></Link>
-          <Link href="/about"><a className="button">About</a></Link>
-          <Link href="/blog"><a className="button">Blog</a></Link>
-          <Link href="/support"><a className="button">Support</a></Link>
+const BlogPage: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [state, handleSubmit] = useForm("meojwpyg");
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://formspree.io/js/formbutton-v1.min.js";
+    script.defer = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      (window as any).formbutton = (window as any).formbutton || function() { ((window as any).formbutton.q = (window as any).formbutton.q || []).push(arguments) };
+      (window as any).formbutton("create", {
+        action: "https://formspree.io/f/meojwpyg",
+        title: "How can we help?",
+        fields: [
+          { 
+            type: "email", 
+            label: "Email:", 
+            name: "email",
+            required: true,
+            placeholder: "brennan@mahto.xyz"
+          },
+          {
+            type: "textarea",
+            label: "Message:",
+            name: "message",
+            placeholder: "What's on your mind?",
+          },
+          { type: "submit" }      
+        ],
+        styles: {
+          title: {
+            backgroundColor: "gray"
+          },
+          button: {
+            backgroundColor: "gray"
+          }
+        }
+      });
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({ ...prev, [name]: '' }));
+  };
+
+  const validate = (data: FormData): FormErrors => {
+    const errors: FormErrors = {};
+    if (!data.name) errors.name = 'Name is required';
+    if (!data.email) errors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(data.email)) errors.email = 'Email is invalid';
+    if (!data.phoneNumber) errors.phoneNumber = 'Phone number is required';
+    else if (!/^\d{10}$/.test(data.phoneNumber)) errors.phoneNumber = 'Phone number is invalid';
+    if (!data.message) errors.message = 'Message is required';
+    return errors;
+  };
+
+  const sanitizeUrl = (url: string): string => {
+    const parser = document.createElement('a');
+    parser.href = url;
+    if (parser.hostname !== window.location.hostname) {
+      return window.location.origin;
+    }
+    return url;
+  };
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const validationErrors = validate(formData);
+    if (Object.keys(validationErrors).length === 0) {
+      handleSubmit(e);
+      if (state.succeeded) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phoneNumber: '', message: '' });
+      }
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-duckBlue1 to-duckBlue2 flex items-center justify-center p-4">
+      <div className="border-duckYellow rounded-lg border  overflow-hidden max-w-6xl w-full flex flex-col md:flex-row">
+        <div className="text-duckBlue2 border-duckYellow border p-8 md:w-1/3 flex flex-col justify-between">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Need Tech Support?</h2>
+            <p className="mb-2">Feel free to reach out to me!</p>
+            <p className='flex-auto'>Phone: (317)-316-0964</p>
+            <div className='my-3'>
+              <p>Monday - Friday:<span className='text-duckYellow'> 08:00-1700</span></p>
+              <div className='my-3'>
+                <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
+              </div>
+            </div>
+          </div>
+          <div className="text-duckYellow">
+            <h3 className="text-xl font-semibold">Brennan Mahto</h3>
+            <p>Tech Support Specialist</p>
+          </div>
         </div>
-        <button className="button md:hidden">
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeWidth="1" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </nav>
-    <div className="max-w-screen-lg mx-auto px-4 py-3">
-      <h1 className="text-4xl font-bold text-center text-duckYellow mb-8">Welcome to My Blog</h1>
-      <div className="text-center text-3xl leading-relaxed text-duckBlue mb-6">
-        <p>Welcome to my blog! Here you’ll find articles on various topics.</p>
-        <p>Now if I only had them available ...</p>
-        <p>Until then, check out my socials below:</p>
-      </div>
-      <div className="flex justify-center gap-4 text-duckBlue2 text-4xl transition-colors duration-300">
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-duckYellow">
-          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
-          </svg>
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-duckYellow">
-          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
-          </svg>
-        </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-duckYellow">
-          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"></svg>
-        </a>
+        <div className="p-8 md:w-2/3">
+          <h1 className="text-3xl font-bold text-duckBlue2 mb-6">Contact Me</h1>
+          {isSubmitted ? (
+            <Alert message="Thank you for your message! I'll get back to you soon." type="success" />
+          ) : (
+            <form onSubmit={handleFormSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-duckBlue2 mb-1">Name</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.name ? 'border-duckBlue' : 'border-duckBlue2'}`}
+                  />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
+                </div>
+                {errors.name && <p className="mt-1 text-xs text-duckBlue">{errors.name}</p>}
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-duckBlue2 mb-1">Email</label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.email ? 'border-duckBlue' : 'border-duckBlue2'}`}
+                  />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
+                </div>
+                {errors.email && <p className="mt-1 text-xs text-duckBlue">{errors.email}</p>}
+              </div>
+              <div>
+                <label htmlFor="phoneNumber" className="block text-sm font-medium text-duckBlue2 mb-1">Phone Number</label>
+                <div className="relative">
+                  <input
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.phoneNumber ? 'border-duckBlue' : 'border-duckBlue2'}`}
+                  />
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
+                </div>
+                {errors.phoneNumber && <p className="mt-1 text-xs text-duckBlue">{errors.phoneNumber}</p>}
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-duckBlue2 mb-1">Message</label>
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.message ? 'border-duckBlue' : 'border-duckBlue2'}`}
+                  />
+                  <MessageSquare className="absolute left-3 top-3 text-duckBlue2" size={18} />
+                </div>
+                {errors.message && <p className="mt-1 text-xs text-duckBlue">{errors.message}</p>}
+              </div>
+              <div className="text-right">
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="inline-flex items-center px-4 py-2 bg-duckBlue text-duckBlue2 rounded-md hover:bg-duckYellow hover:text-duckBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-duckBlue"
+                >
+                  <Send className="mr-2" size={18} />
+                  Send Message
+                </button>
+              </div>
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
+            </form>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+export default BlogPage;
