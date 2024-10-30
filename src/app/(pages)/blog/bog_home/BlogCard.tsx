@@ -17,6 +17,7 @@ export const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => (
     className="bg-white rounded-lg shadow-lg overflow-hidden"
   >
     <Link href={`/blog/${post.slug}`} passHref>
+      <a>
       <div className="p-6">
         <span className="text-sm text-blue2">{post.date}</span>
         <h2 className="text-2xl font-bold text-duckPurple mt-2">{post.title}</h2>
@@ -31,7 +32,8 @@ export const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => (
             </span>
           ))}
         </div>
-      </div>
+        </div>
+      </a>
     </Link>
   </motion.article>
 );

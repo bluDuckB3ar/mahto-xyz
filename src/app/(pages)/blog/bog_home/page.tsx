@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaGithub, FaMastodon, FaMedium } from 'react-icons/fa';
-import BlogLayout from 'path-to-your-BlogLayout';
-import BlogCard from 'path-to-your-BlogCard';
+import BlogLayout from './BlogLayout';
+import { BlogCard } from './BlogCard';
 
 const socialMediaLinks = [
   { url: 'https://linkedin.com', label: 'LinkedIn', icon: FaLinkedin },
@@ -64,4 +64,13 @@ export default function BlogPage() {
       </div>
     </BlogLayout>
   );
+}
+interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
 }
