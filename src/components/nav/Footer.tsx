@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaLinkedin, FaTwitter, FaGithub, FaMastodon, FaMedium } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -17,12 +17,12 @@ const Footer = () => {
     margin-top: 20px;
 
     a {
-      color: duckYellow;
+      color: #FFD700; // Replace with actual color value
       transition: color 0.3s;
-      font-size: 14px; /* Adjust the font size to make the icons smaller */
+      font-size: 14px; // Adjust the font size to make the icons smaller
 
       &:hover {
-        color: duckBlue2;
+        color: #1E90FF; // Replace with actual color value
       }
     }
   `;
