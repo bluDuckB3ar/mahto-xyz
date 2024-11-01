@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaGithub, FaMastodon, FaMedium } from 'react-icons/fa';
+import Navbar from '../../components/nav/Navbar';
 
 const socialMediaLinks = [
   { url: 'https://linkedin.com', label: 'LinkedIn', icon: FaLinkedin },
@@ -12,6 +13,8 @@ const socialMediaLinks = [
 const BlogPage = () => {
   return (
     <div className="flex flex-col px-4 sm:px-6 lg:px-8">
+    <Navbar />
+
       <div className=" flex-grow">
         <h1 className="text-4xl font-bold text-center text-duckYellow mb-8">
           Welcome to My Blog
@@ -39,7 +42,7 @@ const BlogPage = () => {
             className="text-duckBlue2 hover:text-duckYellow transition-colors duration-300 text-4xl"
             // Adjust icon size
           >
-            <link.icon />
+            {React.createElement(link.icon)}
           </a>
         ))}
       </div>
