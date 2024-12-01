@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Send, Phone, User, Mail, MessageSquare } from 'lucide-react';
 import Alert from "@/components/ui/alert";
 import { useForm, ValidationError } from '@formspree/react';
@@ -27,41 +27,25 @@ const ContactPage: React.FC = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  
-  // Formspree form ID
   const [state, handleSubmit] = useForm("meojwpyg");
 
   useEffect(() => {
-    if (state.succeeded) {
-      setIsSubmitted(true);
-    }
-  }, [state.succeeded]);
+    const script = document.createElement('script');
+    script.src = "https://formspree.io/js/formbutton-v1.min.js";
+    script.defer = true;
+    document.body.appendChild(script);
 
-  useEffect(() => {
-    const scriptId = "formspree-script";
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement('script');
-      script.id = scriptId;
-      script.src = "https://formspree.io/js/formbutton-v1.min.js";
-      script.defer = true;
-      document.body.appendChild(script);
-
-      return () => {
-        document.body.removeChild(script);
-      };
-    }
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
-  
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     setErrors(prev => ({ ...prev, [name]: '' }));
   };
-  
-  const getInputClassNames = (hasError: boolean) => {
-    return `pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${hasError ? 'border-duckBlue' : 'border-duckBlue2'}`;
-  };
-  
+
   const validate = (data: FormData): FormErrors => {
     const errors: FormErrors = {};
     if (!data.name) errors.name = 'Name is required';
@@ -73,16 +57,18 @@ const ContactPage: React.FC = () => {
     return errors;
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate(formData);
-    
-    if (Object.keys(validationErrors).length > 0) {
+    if (Object.keys(validationErrors).length === 0) {
+      handleSubmit(e);
+      if (state.succeeded) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', phoneNumber: '', message: '' });
+      }
+    } else {
       setErrors(validationErrors);
-      return;
     }
-
-    handleSubmit(e as React.FormEvent<HTMLFormElement>);
   };
 
   return (
@@ -110,41 +96,37 @@ const ContactPage: React.FC = () => {
           {isSubmitted ? (
             <Alert message="Thank you for your message! I'll get back to you soon." type="success" />
           ) : (
-            <form onSubmit={onSubmit} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-duckBlue2 mb-1">Name</label>
                 <div className="relative">
                   <input
-                    className={getInputClassNames(!!errors.name)}
+                    type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Enter your name"
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.name ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
                 </div>
                 {errors.name && <p className="mt-1 text-xs text-duckBlue">{errors.name}</p>}
-                <ValidationError prefix="Name" field="name" errors={state.errors} />
               </div>
-              
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-duckBlue2 mb-1">Email</label>
                 <div className="relative">
                   <input
+                    type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={getInputClassNames(!!errors.email)}
-                    placeholder="Enter your email"
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.email ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
                 </div>
                 {errors.email && <p className="mt-1 text-xs text-duckBlue">{errors.email}</p>}
-                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
-              
               <div>
                 <label htmlFor="phoneNumber" className="block text-sm font-medium text-duckBlue2 mb-1">Phone Number</label>
                 <div className="relative">
@@ -154,40 +136,39 @@ const ContactPage: React.FC = () => {
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    className={getInputClassNames(!!errors.phoneNumber)}
-                    placeholder="Enter your phone number"
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.phoneNumber ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-duckBlue2" size={18} />
                 </div>
                 {errors.phoneNumber && <p className="mt-1 text-xs text-duckBlue">{errors.phoneNumber}</p>}
-                <ValidationError prefix="Phone Number" field="phoneNumber" errors={state.errors} />
               </div>
-              
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-duckBlue2 mb-1">Message</label>
                 <div className="relative">
                   <textarea
-                    className={getInputClassNames(!!errors.message)}
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Enter your message"
+                    className={`pl-10 pr-3 py-2 w-full border rounded-md focus:ring-2 focus:ring-duckBlue ${errors.message ? 'border-duckBlue' : 'border-duckBlue2'}`}
                   />
                   <MessageSquare className="absolute left-3 top-3 text-duckBlue2" size={18} />
                 </div>
                 {errors.message && <p className="mt-1 text-xs text-duckBlue">{errors.message}</p>}
-                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
-              
-              <button 
-                type="submit" 
-                disabled={state.submitting}
-                className="flex items-center justify-center bg-duckBlue text-white py-2 px-4 rounded-md disabled:opacity-50"
-              >
-                <Send className="mr-2" size={18} />
-                Send Message
-              </button>
+              <div className="text-right">
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="inline-flex items-center px-4 py-2 bg-duckBlue text-duckBlue2 rounded-md hover:bg-duckYellow hover:text-duckBlue transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-duckBlue"
+                >
+                  <Send className="mr-2" size={18} />
+                  Send Message
+                </button>
+              </div>
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
             </form>
           )}
         </div>
