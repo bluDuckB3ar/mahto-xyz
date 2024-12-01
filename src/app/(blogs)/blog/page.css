@@ -1,50 +1,9 @@
-
-.blog-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.blog-post {
-  padding: 2rem;
-  border-radius: 8px;
-
-}
-
-.blog-post h1 {
-  font-size: 2.5rem;
-
-  margin-bottom: 0.5rem;
-}
-
-.date {
-  color: #f0f0f0;
-  margin-bottom: 2rem;
-}
-
-.content {
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.social-media {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.social-media a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #f0f0f0;
-  text-decoration: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.social-media a:hover {
-  background-color: #f0f0;
-  
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100&display=swap');
+.doto {
+  font-family: "Doto", serif;
+  font-optical-sizing: auto;
+  font-weight: 800 ;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
 }

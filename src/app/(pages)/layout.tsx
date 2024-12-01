@@ -18,7 +18,7 @@ export default function PageLayout({
       <div className="absolute bottom-0" >
         
     </div>          
-        
+    <Footer />
     </div>);
 }  
 

@@ -1,5 +1,4 @@
 "use client";
-import Navbar from '@/components/nav/Navbar';
 import React from 'react';
 
 interface TimelineItem {
@@ -115,7 +114,7 @@ const CareerTimeline: React.FC = () => (
     {careerTimeline.map((item, index) => (
       <div key={index} className="border-l-4 border-duckYellow pl-4">
         <h3 className="text-2xl font-semibold text-duckPurple">{item.title}</h3>
-        <p className="text-sm text-gray-600">{item.date} - {item.company}</p>
+        <p className="text-sm ">{item.date} - {item.company}</p>
         <ul className="mt-2 list-disc list-inside">
           {item.description.map((desc, i) => (
             <li key={i} className="text-sm">{desc}</li>

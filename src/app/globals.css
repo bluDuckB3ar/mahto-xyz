@@ -1,6 +1,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+
 
 @layer base {
   :root {
@@ -118,6 +120,11 @@
   }
 }
 
+
+
+
+
+
 .mart {
   /* Paste the .dark selector code here */
   --duckBlue2-50: 1 16 25;
@@ -181,3 +188,11 @@
   --duckPurple-950: 253 250 232;
 }
 
+.doto-font {
+  font-family: "Doto", serif;
+  font-optical-sizing: auto;
+  font-weight: 100 ;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
+}

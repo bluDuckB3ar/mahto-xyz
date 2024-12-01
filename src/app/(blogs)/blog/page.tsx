@@ -1,36 +1,63 @@
-
-
-import { FaLinkedin, FaTwitter, FaGithub, FaMastodon, FaMedium } from 'react-icons/fa';
+import React from 'react';
 import './page.css';
 
-const socialMediaLinks = [
-  { url: 'https://www.linkedin.com/in/brennan-mahto', label: 'LinkedIn', icon: FaLinkedin },
-  { url: 'https://twitter.com/duckb3ar', label: 'Twitter', icon: FaTwitter },
-  { url: 'https://github.com/bluDuckb3ar', label: 'GitHub', icon: FaGithub },
-  { url: 'https://mastodon.social/@duckb3ar', label: 'Mastodon', icon: FaMastodon },
-  { url: 'https://medium.com/@duckb3ar', label: 'Medium', icon: FaMedium },
-];
+export default async function BlogPage() {
+  const messages = [
+ "Sorry for the inconvenience, but this page is still under construction.",
+  "Please check back later for updates.",
+  "Thank you for your patience.",
+  "Sorry for the inconvenience, but this page is still under construction.",
+  "Please check back later for updates.",
+  "Thank you for your patience.",
+  "Sorry for the inconvenience, but this page is still under construction.",
+  "Please check back later for updates.",
+  "Thank you for your patience.",
+  "Sorry for the inconvenience, but this page is still under construction.",
+  "Please check back later for updates.",
+  "Thank you for your patience.",
+  "ok fine... I'll stop now.",
+  "you can go now.",
+  "bye.",
+  "I said bye.",
+  "why are you still here?",
+  "I'm done.",
+  "I'm really done.",
+  "I'm really really done.",
+  "I'm really really really done.",
+  "I'm really really really really done.",
+  "I'm really really really really really done.",
+  "I'm really really really really really really done.",
+  "quak.",
+  "quak.",
+  "quak.",
+  "quak.",
+  "quak.",
+  "quak.",
+  "quak.",
+  "quak.",
+  "quak."
 
-const BlogPage = () => {
+  ];
+
   return (
-    <div className='blog-page'>
-      <div className='blog-post f'>
-        <h1>Hello World</h1>
-        <p className='date'>December 1st , 2024</p>
-        <div className='content'>
-          <p>Welcome to my blog! This is my first post. Stay tuned for more updates.</p>
-        </div>
-        <div className='social-media'>
-          {socialMediaLinks.map((link) => (
-            <a key={link.label} href={link.url} target='_blank' rel='noopener noreferrer'>
-              <link.icon />
-              <span>{link.label}</span>
-            </a>
-          ))}
+    <div className="container max-w-4xl py-6 lg:py-10">
+      <div className="flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
+        <div className="flex-1 space-y-4">
+          <div className="flex overflow-hidden text-doto space-x-8 group">
+            <div className="flex font-extrabold font-doto space-x-8 animate-loop-scroll whitespace-nowrap">
+              {messages.map((message, index) => (
+                <span key={index} className="text-doto text-3xl font-doto md:text-2xl text-duckBlue">
+                  {message}
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="text-lg text-white">
+            Welcome to my blog! Here you can find all my latest posts.
+          </p>
         </div>
       </div>
+      <hr className="my-8 border-duckYellow" />
     </div>
   );
-};
-
-export default BlogPage;
+}
