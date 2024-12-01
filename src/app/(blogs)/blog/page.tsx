@@ -14,9 +14,9 @@ const socialMediaLinks = [
 const BlogPage = () => {
   return (
     <div className='blog-page'>
-      <div className='blog-post'>
+      <div className='blog-post f'>
         <h1>Hello World</h1>
-        <p className='date'>October 10, 2023</p>
+        <p className='date'>December 1st , 2024</p>
         <div className='content'>
           <p>Welcome to my blog! This is my first post. Stay tuned for more updates.</p>
         </div>
