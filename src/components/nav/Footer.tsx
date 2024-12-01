@@ -10,6 +10,7 @@ const Footer = () => {
     { icon: FaGithub, url: 'https://github.com/bluDuckb3ar', label: 'GitHub' },
     { icon: FaMastodon, url: 'https://mastodon.social/@duckb3ar', label: 'Mastodon' },
     { icon: FaMedium, url: 'https://medium.com/@duckb3ar', label: 'Medium' },
+      
   ];
 
   const SocialMediaIcons = styled.div`

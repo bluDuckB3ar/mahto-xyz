@@ -153,7 +153,7 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="container p-4 text-pretty mx-auto">
-      <Navbar />
+
       <div className="text-center my-12">
         <h1 className="text-3xl font-bold text-duckYellow">About Me</h1>
       </div>

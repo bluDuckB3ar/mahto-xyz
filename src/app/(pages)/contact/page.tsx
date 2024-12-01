@@ -35,38 +35,6 @@ const ContactPage: React.FC = () => {
     script.defer = true;
     document.body.appendChild(script);
 
-    script.onload = () => {
-      (window as any).formbutton = (window as any).formbutton || function() { ((window as any).formbutton.q = (window as any).formbutton.q || []).push(arguments) };
-      (window as any).formbutton("create", {
-        action: "https://formspree.io/f/meojwpyg",
-        title: "How can we help?",
-        fields: [
-          { 
-            type: "email", 
-            label: "Email:", 
-            name: "email",
-            required: true,
-            placeholder: "brennan@mahto.xyz"
-          },
-          {
-            type: "textarea",
-            label: "Message:",
-            name: "message",
-            placeholder: "What's on your mind?",
-          },
-          { type: "submit" }      
-        ],
-        styles: {
-          title: {
-            backgroundColor: "gray"
-          },
-          button: {
-            backgroundColor: "gray"
-          }
-        }
-      });
-    };
-
     return () => {
       document.body.removeChild(script);
     };
@@ -89,15 +57,6 @@ const ContactPage: React.FC = () => {
     return errors;
   };
 
-  const sanitizeUrl = (url: string): string => {
-    const parser = document.createElement('a');
-    parser.href = url;
-    if (parser.hostname !== window.location.hostname) {
-      return window.location.origin;
-    }
-    return url;
-  };
-
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate(formData);
@@ -114,7 +73,7 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-duckBlue1 to-duckBlue2 flex items-center justify-center p-4">
-      <div className="border-duckYellow rounded-lg border  overflow-hidden max-w-6xl w-full flex flex-col md:flex-row">
+      <div className="border-duckYellow rounded-lg border overflow-hidden max-w-6xl w-full flex flex-col md:flex-row">
         <div className="text-duckBlue2 border-duckYellow border p-8 md:w-1/3 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl font-bold mb-4">Need Tech Support?</h2>

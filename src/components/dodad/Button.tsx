@@ -1,10 +1,10 @@
-"use client"; 
+"use client";
 import React, { ReactNode, MouseEventHandler } from 'react';
 
 type ButtonProps = {
   children: ReactNode;
   className?: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>; // Add onClick property
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const Button: React.FC<ButtonProps> = ({ children, className = '', onClick }) => (
@@ -17,17 +17,13 @@ const Button: React.FC<ButtonProps> = ({ children, className = '', onClick }) =>
       relative
       inline-flex
       sm:h-8
-
-      lg:px-8
+      lg:px-16
       sm:px-8
-sm:border-3
+      sm:border-3
       sm:square
-
-
       justify-center
       items-center
       overflow-hidden
-
       border-2
       border-duckBlue
       bg-transparent
@@ -46,4 +42,3 @@ sm:border-3
 );
 
 export default Button;
-
