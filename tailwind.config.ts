@@ -25,7 +25,7 @@ const config: Config = {
         duckYellow: "#fbc450",
       },
       animation: {
-        "loop-scroll": "loop-scroll 900s linear infinite",
+        "loop-scroll": "loop-scroll 200s linear infinite",
       },
       keyframes: {
         "loop-scroll": {

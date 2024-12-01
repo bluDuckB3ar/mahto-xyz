@@ -35,10 +35,10 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, handleScroll]);
 
   return (
-    <nav className={`px-2 py-2 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+    <nav className={`px-2 py-22 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="flex items-center justify-between max-w-screen-lg mx-auto">
         <div className="text-medium my-2 bold text-duckBlue2">
           mahto.xyz
@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className="hidden gap-10 md:flex">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <Button className="w-2 text-sm border-2 bv text-duckBlue2">
+              <Button className="w-2 text-sm border-2  text-duckBlue2">
                 {link.label}
               </Button>
             </Link>
@@ -58,24 +58,24 @@ export default function Navbar() {
           aria-label="Toggle mobile menu"
         >
           <svg
-            className="w-8 h-8"
+            className="w-12 h-8"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              strokeWidth="1"
+              strokeWidth="3"
               d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
             ></path>
           </svg>
         </Button>
       </div>
       {isMobileMenuOpen && (
-        <div className="flex flex-col items-center justify-center mt-12 md:hidden space-y-7">
+        <div className="flex flex-col items-center justify-center mt-12 md:hidden space-y-12">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <Button className="w-12 text-sm">
+              <Button className="px-16  text-sm">
                 {link.label}
               </Button>
             </Link>
