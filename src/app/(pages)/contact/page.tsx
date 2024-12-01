@@ -96,7 +96,7 @@ const ContactPage: React.FC = () => {
           {isSubmitted ? (
             <Alert message="Thank you for your message! I'll get back to you soon." type="success" />
           ) : (
-            <form onSubmit={handleFormSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-duckBlue2 mb-1">Name</label>
                 <div className="relative">
