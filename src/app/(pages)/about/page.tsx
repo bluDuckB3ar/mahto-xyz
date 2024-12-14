@@ -153,9 +153,54 @@ const AboutPage: React.FC = () => {
   return (
     <div className="container p-4 text-pretty mx-auto">
 
+
       <div className="text-center my-12">
-        <h1 className="text-3xl font-bold text-duckYellow">About Me</h1>
+        <h1 className="text-3xl  text-duckYellow">About Me</h1>
+       <div className="border-duckYellow my-12 border-t-2 border-b-2">
+        </div>
+
+        <p className="text-duckBlue2 my-4 text-2xl">
+           
+Hello! My name is <span className='text-duckBlue text-center'>Brennan Allen Mahto! </span> 
+            </p>
       </div>
+      <div className="space-y-4">
+          <p className="text-duckBlue2  text-center">
+            I am open to new opportunities and challenges, and I am always looking for ways to grow and improve. If you are interested in working with me or learning more about my experience, please feel free to reach out to me. I would love to connect with you and discuss how we can work together to achieve our goals.
+            <div className='my-4'>
+              Please contact me at <span className=" text-duckYellow">brennan@mahto.xyz</span><span className='duckBlue2'> or </span> <span> </span> <span className='  text-duckYellow '> 317-316-0964</span> for any inquiries.
+              <p>
+                I am open to <span className=" text-duckYellow">contract work, full-time positions, or any other opportunities that may be available. </span>
+              </p>
+              This includes but is not limited to: <span className=" text-duckYellow">IT Support, Systems Administration, Network Administration</span>, and more.
+            </div>
+            <div className =' align-center items-center text-center' >
+              
+            <p>Sorry about the 90's retro theme im trying to make... </p>
+            <p className='text-duckYellow text-2xl'> I promise you my resume isn't as hard on the eyes...</p>
+            <p>Until then ... listen to one of my favorite songs!</p>
+            <p>
+              <div className='my-20'>                
+              </div>
+              <iframe 
+                src="https://open.spotify.com/embed/track/1EVJeWeItAPcATFolrw3VR" 
+                width="100%" 
+                height="150" 
+                frameBorder="0" 
+                allowFullScreen 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"
+                className="rounded-lg"
+                ></iframe>
+            </p>
+                </div>
+
+          </p>
+          </div>
+          
+                <div className='border-duckBlue border-t-2 border-b-2'> 
+
+                </div>
       <div className="space-y-12 text-2xl">
         <Section title="Career Timeline" isOpen={openSections.career} onToggle={() => toggleSection('career')}>
           <CareerTimeline />

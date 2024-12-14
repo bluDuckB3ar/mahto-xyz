@@ -23,6 +23,17 @@ const config: Config = {
         duckPurple: "#cc66d6",
         duckBlue2: "#d3eef9",
         duckYellow: "#fbc450",
+        duckRed: "#f25f5c",
+        duckGreen: "#00b159",
+        duckGold: "#aaa201",
+        duckGray: "#f0f0f0",
+        duckBlack: "#000000",
+        duckWhite: "#ffffff",
+        duckWhite2: "#f5f5f5",
+        duckWhite3: "#f9f9f9",
+        duckWhite4: "#f4f4f4",
+        duckWhite5: "#f8f8f8",
+      
       },
       animation: {
         "loop-scroll": "loop-scroll 200s linear infinite",
@@ -30,7 +41,7 @@ const config: Config = {
       keyframes: {
         "loop-scroll": {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(-32%)" },
         },
 
       },

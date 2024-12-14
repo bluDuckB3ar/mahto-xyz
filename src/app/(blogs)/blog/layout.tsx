@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/nav/Footer";
 import Navbar from "@/components/nav/Navbar";
 
 
@@ -17,8 +18,8 @@ export default function PageLayout({
       </div>
       <div className="absolute bottom-0" >
         
+       <Footer />
     </div>
-       
         
     </div>);
 }  

@@ -21,7 +21,7 @@ export default function RootLayout({
         <div className="bg-background" style={{ minHeight: "100vh", position: "relative" }}>
           {children}
           <div className="absolute bottom-0 w-full">
-            <Footer />
+        
           </div>
         </div>
       </body>
