@@ -176,8 +176,8 @@ Hello! My name is <span className='text-duckBlue text-center'>Brennan Allen Maht
             </div>
             <div className =' align-center items-center text-center' >
               
-            <p>Sorry about the 90's retro theme im trying to make... </p>
-            <p className='text-duckYellow text-2xl'> I promise you my resume isn't as hard on the eyes...</p>
+            <p>Sorry about the 90&apos;s retro theme im trying to make... </p>
+            <p className='text-duckYellow text-2xl'> I promise you my resume isn&apos;t as hard on the eyes...</p>
             <p>Until then ... listen to one of my favorite songs!</p>
             <p>
               <div className='my-20'>                
