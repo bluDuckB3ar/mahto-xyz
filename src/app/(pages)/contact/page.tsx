@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { Send, Phone, User, Mail, MessageSquare } from 'lucide-react';
 import Alert from "@/components/ui/alert";
 import { useForm, ValidationError } from '@formspree/react';
+import { useRouter } from 'next/navigation';
 
 interface FormData {
   name: string;
@@ -25,9 +26,11 @@ const ContactPage: React.FC = () => {
     phoneNumber: '',
     message: ''
   });
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const [state, handleSubmit] = useForm("meojwpyg");
+  const [state, handleSubmit] = useForm("myzzwnbk");
+  const router = useRouter();
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -57,14 +60,15 @@ const ContactPage: React.FC = () => {
     return errors;
   };
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate(formData);
     if (Object.keys(validationErrors).length === 0) {
-      handleSubmit(e);
+      await handleSubmit(e);
       if (state.succeeded) {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', phoneNumber: '', message: '' });
+        router.push('/success'); // Redirect to the success page
       }
     } else {
       setErrors(validationErrors);
@@ -80,9 +84,8 @@ const ContactPage: React.FC = () => {
             <p className="mb-2">Feel free to reach out to me!</p>
             <p className='flex-auto'>Phone: (317)-316-0964</p>
             <div className='my-3'>
-              <p>Monday - Friday:<span className='text-duckYellow'> 08:00-1700</span></p>
+              <p> All Week:<span className='text-duckYellow'> 08:00-1700</span></p>
               <div className='my-3'>
-                <p>Saturday - Sunday:<span className='text-duckYellow'> 08:00-0300</span></p>
               </div>
             </div>
           </div>
@@ -173,7 +176,6 @@ const ContactPage: React.FC = () => {
           )}
         </div>
       </div>
-   
     </div>
   );
 };
