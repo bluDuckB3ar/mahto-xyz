@@ -168,7 +168,7 @@ Hello! My name is <span className='text-duckBlue text-center'>Brennan Allen Maht
           </p>
       
           <div className='my-4'>
-<p> 
+             <p> 
                 I am open to <span className=" text-duckYellow">contract work, full-time positions, or any other opportunities that may be available. </span>
               </p>
               This includes but is not limited to: <span className=" text-duckYellow">IT Support, Systems Administration, Network Administration</span>, and more.
