@@ -166,9 +166,7 @@ Hello! My name is <span className='text-duckBlue text-center'>Brennan Allen Maht
           <p className="text-duckBlue2  text-center">
             I am open to new opportunities and challenges, and I am always looking for ways to grow and improve. If you are interested in working with me or learning more about my experience, please feel free to reach out to me. I would love to connect with you and discuss how we can work together to achieve our goals.
           </p>
-          <p className="text-duckBlue2 text-center">
-            I am open to new opportunities and challenges, and I am always looking for ways to grow and improve. If you are interested in working with me or learning more about my experience, please feel free to reach out to me. I would love to connect with you and discuss how we can work together to achieve our goals.
-          </p>
+      
           <div className='my-4'>
 <p> 
                 I am open to <span className=" text-duckYellow">contract work, full-time positions, or any other opportunities that may be available. </span>
