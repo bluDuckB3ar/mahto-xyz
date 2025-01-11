@@ -10,15 +10,17 @@ export default function PageLayout({
   return (
 
 
-    <div className="bg-background w-full h-full ">
+    <div className="bg-background w-full h-full py-4">
       <Navbar />
-      <div className="max-w-screen-lg mx-auto px-4 py-3">
+      <div className="max-w-screen-lg mx-auto px-4 py-12">
         {children}
       </div>
       <div className="absolute bottom-0" >
         
-    </div>          
+    </div> 
+    <div className="absolute bottom-0 w-full">
     <Footer />
+      </div>         
     </div>);
 }  
 

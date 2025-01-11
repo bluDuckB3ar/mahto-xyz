@@ -6,6 +6,7 @@ const links = [
   { href: "/about", label: "about", fontSize: "text-xl" },
   { href: "/blog", label: "blog", fontSize: "text-xl" },
   { href: "/contact", label: "contact", fontSize: "text-xl" },
+  { href: "/support", label: "support", fontSize: "text-xl" },
 ];
 
 export default function Home() {

@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import ContactPage from '../contact/page';
 
 interface TimelineItem {
   date: string;
@@ -60,14 +61,7 @@ const careerTimeline: TimelineItem[] = [
 ];
 
 const skillsByCategory: SkillCategories = {
-  Networking: [
-    'TCP/IP',
-    'LAN/WAN',
-    'Switching',
-    'VLANs',
-    'Firewalls',
-    'VPNs',
-  ],
+  Networking: ['TCP/IP', 'LAN/WAN', 'Switching', 'VLANs', 'Firewalls', 'VPNs'],
   'Systems Administration Tools': [
     'Active Directory',
     'Azure',
@@ -78,31 +72,21 @@ const skillsByCategory: SkillCategories = {
     'Intune',
     'PowerShell',
   ],
-  'Ticketing Systems': [
-    'ServiceNow',
-    'Oracle',
-    'IT Glue',
-    'Google Forms',
-  ],
-  Software: [
-    'Microsoft 365',
-    'JAMF',
-    'Epic',
-    'Imprivata',
-    'Mac OS',
-    'SQL',
-  ],
+  'Ticketing Systems': ['ServiceNow', 'Oracle', 'IT Glue', 'Google Forms'],
+  Software: ['Microsoft 365', 'JAMF', 'Epic', 'Imprivata', 'Mac OS', 'SQL'],
   Hardware: ['Servers', 'Desktops', 'Laptops', 'Printers', 'Mobile devices', 'Hard Drives'],
   Certifications: ['CCENT', 'Net+', 'A+'],
   Programming: ['HTML', 'JS', 'CSS', 'PowerShell', 'Python', 'Bash', 'SQL', 'C++'],
 };
 
-const Section: React.FC<{ title: string; isOpen: boolean; onToggle: () => void; children: React.ReactNode }> = ({ title, isOpen, onToggle, children }) => (
+const Section: React.FC<{ title: string; isOpen: boolean; onToggle: () => void; children: React.ReactNode }> = ({
+  title,
+  isOpen,
+  onToggle,
+  children,
+}) => (
   <div className="p-4 rounded-lg shadow-lg bg-gradient-to-br from-duckBlue-100 to-blue-100">
-    <h2
-      className="flex items-center justify-between mb-2 text-xl font-semibold cursor-pointer text-duckYellow"
-      onClick={onToggle}
-    >
+    <h2 className="flex items-center justify-between mb-2 text-xl font-semibold cursor-pointer text-duckYellow" onClick={onToggle}>
       {title}
     </h2>
     {isOpen && <div>{children}</div>}
@@ -113,11 +97,15 @@ const CareerTimeline: React.FC = () => (
   <div className="space-y-8">
     {careerTimeline.map((item, index) => (
       <div key={index} className="border-l-4 border-duckYellow pl-4">
-        <h3 className="text-2xl font-semibold text-duckPurple">{item.title}</h3>
-        <p className="text-sm ">{item.date} - {item.company}</p>
+        <h3 className="text-2xl font-semibold text-duckBlue">{item.title}</h3>
+        <p className="text-sm ">
+          {item.date} - {item.company}
+        </p>
         <ul className="mt-2 list-disc list-inside">
           {item.description.map((desc, i) => (
-            <li key={i} className="text-sm">{desc}</li>
+            <li key={i} className="text-sm">
+              {desc}
+            </li>
           ))}
         </ul>
       </div>
@@ -129,10 +117,12 @@ const Skills: React.FC = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {Object.entries(skillsByCategory).map(([category, skills]) => (
       <div key={category}>
-        <h3 className="mb-2 text-xl font-semibold text-duckPurple">{category}</h3>
+        <h3 className="mb-2 text-xl font-semibold text-duckBlue">{category}</h3>
         <ul className="pl-4 space-y-1 list-disc">
           {skills.map((skill, index) => (
-            <li key={index} className="text-sm">{skill}</li>
+            <li key={index} className="text-sm">
+              {skill}
+            </li>
           ))}
         </ul>
       </div>
@@ -147,66 +137,48 @@ const AboutPage: React.FC = () => {
   });
 
   const toggleSection = (section: keyof typeof openSections) => {
-    setOpenSections(prev => ({ ...prev, [section]: !prev[section] }));
+    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
   return (
     <main className="container p-4 text-pretty mx-auto">
       <div className="text-center my-12">
-        <h1 className="text-3xl  text-duckYellow">About Me</h1>
-       <div className="border-duckYellow my-12 border-t-2 border-b-2">
-        </div>
-
+        <h1 className="text-3xl text-duckYellow">About Me</h1>
+        <div className="border-duckYellow my-12 border-t-2 border-b-2"></div>
         <p className="text-duckBlue2 my-4 text-2xl">
-           
-Hello! My name is <span className='text-duckBlue text-center'>Brennan Allen Mahto! </span> 
-            </p>
+          Hello! My name is <span className="text-duckBlue2 text-center">Brennan Allen Mahto!</span>
+        </p>
       </div>
       <div className="space-y-4">
-          <p className="text-duckBlue2  text-center">
-            I am open to new opportunities and challenges, and I am always looking for ways to grow and improve. If you are interested in working with me or learning more about my experience, please feel free to reach out to me. I would love to connect with you and discuss how we can work together to achieve our goals.
-          </p>
-      
-          <div className='my-4'>
-             <p> 
-                I am open to <span className=" text-duckYellow">contract work, full-time positions, or any other opportunities that may be available. </span>
-              </p>
-              This includes but is not limited to: <span className=" text-duckYellow">IT Support, Systems Administration, Network Administration</span>, and more.
-            </div>
-            <div className =' align-center items-center text-center' >
-              
-            <p>Sorry about the 90&apos;s retro theme im trying to make... </p>
-            <p className='text-duckYellow text-2xl'> I promise you my resume isn&apos;t as hard on the eyes...</p>
-            <p>Until then ... listen to one of my favorite songs!</p>
-          
-              <div className='my-20'>                
-              </div>
-              <iframe 
-                src="https://open.spotify.com/embed/track/1EVJeWeItAPcATFolrw3VR" 
-                width="100%" 
-                height="150" 
-                style={{ border: 0 }}
-                allowFullScreen 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy"
-                className="rounded-lg"
-              />
-                </div>
-
-     
-          </div>
-          
-                <div className='border-duckBlue border-t-2 border-b-2'> 
-
-                </div>
-      <div className="space-y-12 text-2xl">
+        <p className="text-duckBlue2 text-center">
+          I am open to new opportunities and challenges, and I am always looking for ways to grow and improve. If you are interested in working with me or learning more about my experience, please feel free to reach out to me. I would love to connect with you and discuss how we can work together to achieve our goals.
+        </p>
+        <div className="align-center text-duckBlue2 items-center text-center">
+          This includes but is not limited to: IT Support, Systems Administration, Network Administration, and more.
+          <div className="my-20"></div>
+          <iframe
+            src="https://open.spotify.com/embed/track/1EVJeWeItAPcATFolrw3VR"
+            width="100%"
+            height="150"
+            style={{ border: 0 }}
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            className="rounded-lg"
+          />
+        </div>
+      </div>
+      <div className="border-duckBlue2 text-duckBlue2 border-t-2 border-b-2"></div>
+      <div className="space-y-12  text-duckBlue2 text-2xl">
         <Section title="Career Timeline" isOpen={openSections.career} onToggle={() => toggleSection('career')}>
           <CareerTimeline />
         </Section>
         <Section title="Skills" isOpen={openSections.skills} onToggle={() => toggleSection('skills')}>
           <Skills />
         </Section>
+        <ContactPage />
       </div>
+      
     </main>
   );
 };

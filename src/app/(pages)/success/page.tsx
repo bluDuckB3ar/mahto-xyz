@@ -21,7 +21,7 @@ const CountdownRedirect = ({ seconds }: { seconds: number }) => {
 
 export default function PageLayout() {
     return (
-        <div className="bg-background w-full">
+        <div className="bg-background w-full h-full py-4">
             <div className="min-h-screen flex flex-col items-center justify-center p-4">
                 <div className="text-center space-y-4">
                     <h1 className="text-3xl font-bold text-green-500">Message Sent Successfully!</h1>

@@ -11,9 +11,11 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const links = [
+    { href: "/support", label: "Support" },
     { href: "/contact", label: "Contact" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
+   
   ];
 
   const handleMobileMenuClick = () => {
