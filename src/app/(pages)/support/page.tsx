@@ -29,9 +29,9 @@ const SupportPage = () => {
             animate="visible"
             variants={containerVariants}
         >
-            <h1 className="text-4xl font-bold mb-8">IT Support Services</h1>
+            <h1 className="text-4xl font-bold mb-2">IT Support Services</h1>
 
-            <div className="max-w-3xl text-duckBlue2 w-full space-y-8 mb-8">
+            <div className="max-w-3xl text-duckBlue2 w-screen space-y-8 mb-8">
                 <section className="space-y-4">
                     <h2 className="text-2xl  font-semibold">
                         Services I Offer:
