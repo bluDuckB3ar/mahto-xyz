@@ -1,0 +1,117 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build project
+        run: npm run build
+
+      - name: Generate Contentlayer
+        run: npx contentlayer build
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Check for console logs
+        run: |
+          if grep -r "console\.\(log\|warn\|error\|debug\)" src --include="*.ts" --include="*.tsx" | grep -v "node_modules" | grep -v ".next"; then
+            echo "❌ Found console statements in source code"
+            exit 1
+          fi
+          echo "✅ No console statements found"
+
+      - name: Check for hardcoded secrets
+        run: |
+          if grep -r "password\|secret\|token\|key=" src --include="*.ts" --include="*.tsx" | grep -v "node_modules" | grep -v ".next"; then
+            echo "⚠️  Potential hardcoded secrets found - review before pushing"
+          else
+            echo "✅ No obvious hardcoded secrets detected"
+          fi
+
+      - name: Build cache
+        uses: actions/cache@v3
+        with:
+          path: .next
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Upload build artifacts
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-build-${{ matrix.node-version }}
+          path: .next
+          retention-days: 3
+
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run ESLint
+        run: npm run lint || true
+
+      - name: Check git status for uncommitted changes
+        run: |
+          git status
+          # Warn if .contentlayer or .next are not ignored
+          if git status | grep -E "\.contentlayer/|\.next/"; then
+            echo "⚠️  Warning: .contentlayer/ or .next/ should be ignored"
+          fi
+
+  deploy-preview:
+    needs: [build-and-test, code-quality]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build for production
+        run: npm run build
+
+      - name: Success notification
+        run: |
+          echo "✅ Build successful!"
+          echo "Ready for deployment to production"

@@ -2,7 +2,7 @@ import React from "react";
 import { Mac, Windows, Linux } from "@/public/social-icons/icons"; // Adjust the import path as needed
 
 import Button from "@/components/dodad/Button";
-console.log({ Mac, Windows, Linux }); // Log the imported icons
+// Icons imported for display
 
 const operatingSystems = [
     {
