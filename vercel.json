@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run vercel-build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs",
+  "nodeVersion": "20.x",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
