@@ -1,0 +1,42 @@
+
+> mahto-xyz@1.0.0 vercel-build
+> npm install --legacy-peer-deps && npx contentlayer build || true && next build
+
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'mahto-xyz@1.0.0',
+npm warn EBADENGINE   required: { node: '20.x', npm: '10.x' },
+npm warn EBADENGINE   current: { node: 'v24.13.0', npm: '11.6.2' }
+npm warn EBADENGINE }
+
+up to date, audited 1186 packages in 1s
+
+359 packages are looking for funding
+  run `npm fund` for details
+
+24 vulnerabilities (13 low, 11 moderate)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+Warning: Contentlayer might not work as expected on Windows
+Contentlayer (Warning): Importing from `contentlayer/generated` might not work.
+Config option `compilerOptions.baseUrl` not found in "tsconfig.json".
+
+For more information see https://www.contentlayer.dev/docs/getting-started
+To disable this warning you can set `disableImportAliasWarning: true` in your Contentlayer config.
+
+Generated 4 documents in .contentlayer
+TypeError: The "code" argument must be of type number. Received an instance of Object
+    at process.set [as exitCode] (node:internal/bootstrap/node:119:9)
+    at Cli.runExit (C:\Users\Bean\Documents\Github\mahto-xyz\node_modules\clipanion\lib\advanced\Cli.js:232:26)
+    at run (file:///C:/Users/Bean/Documents/Github/mahto-xyz/node_modules/@contentlayer/cli/src/index.ts:39:3)
+    at main (C:\Users\Bean\Documents\Github\mahto-xyz\node_modules\contentlayer\bin\cli.cjs:5:3) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
