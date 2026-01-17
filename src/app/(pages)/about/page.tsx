@@ -15,92 +15,69 @@ interface SkillCategories {
 
 const careerTimeline: TimelineItem[] = [
   {
-    date: "April 2025 - Present",
-    title: "Installer/Fabricator",
-    company: "Sign Craft Industries, Castleton IN",
+    date: "September 2023 - Present",
+    title: "IT Specialist (MSP)",
+    company: "Franciscan Alliance, Indianapolis IN",
     description: [
-      "Manage safe operation of heavy mechanical equipment, including trucks and cranes, for signage installation",
-      "Install raceway, flex-face, panels, and channel letters with high-quality workmanship",
-      "Perform low voltage electrical work and LED wiring with technical precision",
-      "Execute installation of both large-scale and small-scale signs across diverse projects",
-    ],
-  },
-  {
-    date: "September 2023 - October 2024",
-    title: "IT Specialist / Desktop Support Engineer",
-    company: "Franciscan Alliance (MSP: R4 Solutions), Greenwood IN",
-    description: [
-      "Provided remote and in-person technical support for over 2,500 health professionals across ten facilities",
-      "Managed Kurmi cloud and VOIP systems, including phone trees, voicemails, and POE phone installations",
-      "Administered E3 to E5 end-user environments using MDT, SCCM, and Active Directory",
-      "Handled average of 10 tickets daily using ServiceNow, meeting SLAs for issues from deployments to major outages",
-      "Diagnosed and resolved issues with healthcare software including Provation, Epic, and Citrix",
+      "Orchestrated the support for our 2,500+ Health Care Professionals across our 15+ facilities",
+      "Implementing strategies to address hardware issues, network outages, fax issues, or common application problems, ensuring minimal disruption to patient care.",
+      "Establish clear communication channels between IT staff from different departments and regions, along with clinical teams to ensure everyone is informed of issues changes, or events.",
+      "Supported our Microsoft integrations using MDT, SCCM, AD, and Intune.",
+      "Automated repetition tasks using PowerShell, for departments with similar device setups and software needs.",
     ],
   },
   {
     date: "January 2022 - September 2023",
-    title: "IT Lead",
-    company: "Computer Technology of Carmel (MSP: Catapult Technology Solutions), Carmel IN",
+    title: "IT Manager (MSP)",
+    company: "Catapult Technology Solutions, Carmel Indiana",
     description: [
-      "Refurbished and integrated computer store with MSP, leading digital transformation efforts",
-      "Set up computers, printers, routers, and network security measures for various environments",
-      "Provided technical support over phone and in person for timely issue resolution",
-      "Maintained high customer satisfaction ratings and demonstrated exceptional service delivery",
+      "Remodeled Managed Maintained daughter company: Computer Technology of Carmel.",
+      "Consistently maintained a 5-star customer satisfaction rating for 2 years, demonstrating exceptional service and commitment to exceeding former and new client expectations.",
+      "Work with businesses providing support, from office moves, network outages, or installations.",
+      "Proficiently diagnosed and repaired various hardware issues across laptops, custom PCs, and Macs, minimizing downtime and ensuring customer satisfaction.",
     ],
   },
   {
     date: "April 2020 - December 2021",
-    title: "Field Engineer / Network Support Specialist",
-    company: "Fujitsu, Remote IN",
+    title: "Field Engineer",
+    company: "Fujitsu, Indianapolis, IN",
     description: [
-      "Provided on-site technical support for retail technology solutions across 50+ retail locations",
-      "Troubleshot and resolved issues with self-checkout kiosks, POS systems, and thermal receipt printers",
-      "Installed and configured servers and UPS systems with rack mounting and cabling",
-      "Coordinated with vendors for hardware procurement and service agreements",
+      "Independently driving, and driving, and driving my work van to support our Grocery / Retail store's POS machines.",
+      "Maintained a professional and patient demeanor in fast-paced, high-volume environments, effectively deploying or repairing hardware as needed.",
+      "Returned and inventoried store registers, self-checkout machines, and various hardware on behalf of clients.",
+      "Successfully led six independent projects for major clients such as Staples, TJX, Kroger, and Starbucks, ranging from hardware POS upgrades to software migrations.",
     ],
   },
   {
     date: "August 2018 - April 2020",
     title: "IT Supervisor",
-    company: "K-12 Tech, Castleton IN",
+    company: "K-12 Tech, Indianapolis, IN",
     description: [
-      "Supported repair and deployment of over 1,000 MacBooks and Chromebooks across 6 school districts",
-      "Managed in-shop break/fix repair operations, improving device turnaround times",
-      "Oversaw inventory management processes and resource allocation",
-      "Progressed from intern to IT Supervisor within two years, demonstrating significant growth",
+      "Quality Controlled new and ongoing students to retain the support and confidence for their future career.",
+      "Mentored and trained 5 interns fostering their technical skills and providing hands-on experience.",
+      "Two of the interns successfully secured full-time IT positions upon graduation.",
     ],
   },
 ];
 
 const skillsByCategory: SkillCategories = {
-  Certifications: ['CompTIA A+', 'CompTIA Network+', 'Cisco CCENT'],
-  Skills: ['Risk Management', 'Data Protection', 'Information Assurance', 'Incident Response', 'Malware Analysis', 'System Administration', 'Network Security', 'Technical Support', 'Cybersecurity Governance', 'Problem-solving'],
-  Technologies: ['Active Directory', 'Azure', 'SharePoint', 'Microsoft Office Suite', 'Networking (TCP/IP, DNS)', 'AWS', 'MDT', 'SCCM', 'ServiceNow', 'PowerShell'],
+  Networking: ['TCP/IP', 'LAN/WAN', 'Switching', 'VLANs', 'Firewalls', 'VPNs'],
+  'Systems Administration Tools': [
+    'Active Directory',
+    'Azure',
+    'Office 365',
+    'Exchange',
+    'SharePoint',
+    'OneDrive',
+    'Intune',
+    'PowerShell',
+  ],
+  'Ticketing Systems': ['ServiceNow', 'Oracle', 'IT Glue', 'Google Forms'],
+  Software: ['Microsoft 365', 'JAMF', 'Epic', 'Imprivata', 'Mac OS', 'SQL'],
+  Hardware: ['Servers', 'Desktops', 'Laptops', 'Printers', 'Mobile devices', 'Hard Drives'],
+  Certifications: ['CCENT', 'Net+', 'A+'],
+  Programming: ['HTML', 'JS', 'CSS', 'PowerShell', 'Python', 'Bash', 'SQL', 'C++'],
 };
-
-const education = [
-  {
-    school: "Western Governors University",
-    program: "Bachelor of Arts, Cyber Security Information Assurance",
-    status: "May 2025 - May 2027",
-    description: "Remote degree focusing on security principles, threat analysis, system protection, and cybersecurity governance.",
-  },
-];
-
-const projects = [
-  {
-    name: "SNOW-Snek",
-    description: "Python program to export Service Now tickets and map them to Google Timeline, creating mileage reports automatically.",
-  },
-  {
-    name: "Malware Analyst - TCM",
-    description: "AWS deployed digital forensic lab for analyzing malware, preparation for Practical Malware Research Professional (PMRP) exam.",
-  },
-  {
-    name: "Color Quak",
-    description: "Color palette maker written in C# that scans images and generates color palettes from them.",
-  },
-];
 
 const Section: React.FC<{ title: string; isOpen: boolean; onToggle: () => void; children: React.ReactNode }> = ({
   title,
@@ -153,36 +130,10 @@ const Skills: React.FC = () => (
   </div>
 );
 
-const Education: React.FC = () => (
-  <div className="space-y-6">
-    {education.map((edu, index) => (
-      <div key={index} className="border-l-4 border-duckPurple pl-4">
-        <h3 className="text-2xl font-semibold text-duckBlue">{edu.school}</h3>
-        <p className="text-sm font-semibold text-duckYellow">{edu.program}</p>
-        <p className="text-sm text-duckGray">{edu.status}</p>
-        <p className="text-sm mt-2">{edu.description}</p>
-      </div>
-    ))}
-  </div>
-);
-
-const Projects: React.FC = () => (
-  <div className="space-y-6">
-    {projects.map((project, index) => (
-      <div key={index} className="border-l-4 border-duckRed pl-4">
-        <h3 className="text-2xl font-semibold text-duckBlue">{project.name}</h3>
-        <p className="text-sm mt-2">{project.description}</p>
-      </div>
-    ))}
-  </div>
-);
-
 const AboutPage: React.FC = () => {
   const [openSections, setOpenSections] = React.useState({
     career: true,
     skills: true,
-    education: true,
-    projects: true,
   });
 
   const toggleSection = (section: keyof typeof openSections) => {
@@ -224,12 +175,6 @@ const AboutPage: React.FC = () => {
         </Section>
         <Section title="Skills" isOpen={openSections.skills} onToggle={() => toggleSection('skills')}>
           <Skills />
-        </Section>
-        <Section title="Education" isOpen={openSections.education} onToggle={() => toggleSection('education')}>
-          <Education />
-        </Section>
-        <Section title="Projects" isOpen={openSections.projects} onToggle={() => toggleSection('projects')}>
-          <Projects />
         </Section>
         <ContactPage />
       </div>
