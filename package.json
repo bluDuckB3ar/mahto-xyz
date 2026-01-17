@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install --legacy-peer-deps && (npx contentlayer build; true) && next build"
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
