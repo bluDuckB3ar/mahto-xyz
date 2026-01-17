@@ -51,6 +51,10 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
   "repository": {
     "type": "git",
     "url": "mahto-xyz"
